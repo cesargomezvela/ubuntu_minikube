@@ -1,0 +1,7 @@
+hosts: [
+  { host_ip: "10.100.198.200", host_name: "ubuntu-minikube"}
+]
+
+obsolete_services:
+  - puppet
+  - chef-client
