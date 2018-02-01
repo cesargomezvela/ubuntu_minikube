@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
     v.memory = 3072
   end
   config.vm.define "ubuntu-minikube" do |um|
-  	um.vm.hostname = "ubuntu-minikube"
+    um.vm.hostname = "ubuntu-minikube"
     um.vm.network "private_network", ip: "10.100.199.200"
     um.vm.provision :shell, path: "bootstrap.sh"
     um.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/ubuntu-minikube.yml -c local"
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     um.vm.provision :file,  source: "./minikube/v0.25.0/minikube-linux-amd64", destination: "/home/vagrant/minikube"
     um.vm.provision :shell, inline: "chmod +x /home/vagrant/minikube"
     um.vm.provision :shell, inline: "sudo mv /home/vagrant/minikube /usr/local/bin/"
-    um.vm.provision :shell, inline: "minikube start --vm-driver=none", run: "always"
+    #um.vm.provision :shell, inline: "sudo minikube start --vm-driver=none", run: "always"
   end
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
